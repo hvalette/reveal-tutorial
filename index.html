@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/reveal.js/dist/theme/black.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <p class="r-fit-text" style="color: #f2e241">Reveal.JS</p>
+          <p class="fragment r-fit-text fade-in">Qu'est ce que c'est ?</p>
+        </section>
+        <section>
+          <p>C'est une librairie Javascript 🤪</p>
+          <p class="fragment fade-in">
+            permettant de faire des présentations 📈
+          </p>
+          <p class="fragment fade-in">avec des technologies du web 🤓</p>
+          <p class="fragment fade-in-then-semi-out" style="color: #f2531f">
+            HTML
+          </p>
+          <p class="fragment fade-in-then-semi-out" style="color: #3491cb">
+            CSS
+          </p>
+          <p class="fragment fade-in" style="color: #b09e18">JS</p>
+        </section>
+        <section>
+          <section>
+            <p class="r-fit-text">Installation</p>
+            <br />
+            <span class="material-icons" style="color: white; font-size: 4rem">
+              keyboard_arrow_down
+            </span>
+          </section>
+          <section>
+            <p>
+              Dans ce chapitre, nous allons voir comment mettre en place
+              Reveal.js dans un projet Javascript
+            </p>
+          </section>
+          <section>
+            <p>Tout d'abord, on créer le projet en vanilla Javascript.</p>
+            <p>Ici j'utilise <a href="https://vitejs.dev/">ViteJS</a></p>
+            <br />
+            <pre><code data-trim data-noescape>
+                npm init vite@latest my-presentation --template vanilla
+            </code></pre>
+          </section>
+          <section>
+            <p>Ensuite on install le package reveal.js</p>
+            <br />
+            <pre><code data-trim data-noescape>
+              npm install reveal.js
+          </code></pre>
+          </section>
+          <section>
+            <p>On remplace le main.js par</p>
+            <br />
+            <pre><code data-trim data-noescape>
+              import Reveal from "reveal.js";
+
+              let deck = new Reveal();
+              deck.initialize();
+          </code></pre>
+          </section>
+          <section>
+            <p>Et pour l'html</p>
+            <br />
+            <pre><code data-trim data-noescape data-line-numbers="|2-6,11-18"><script type="text/template">
+              <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+              <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
+              <link
+                rel="stylesheet"
+                href="/node_modules/reveal.js/dist/theme/black.css"
+              />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Vite App</title>
+            </head>
+            <body>
+              <div class="reveal">
+                <div class="slides">
+                  <section>
+                    Hello
+                  </section>
+                </div>
+              </div>
+              </script></code></pre>
+          </section>
+          <section>
+            <p>Le résultat devrait resembler à ça</p>
+            <img
+              src="assets/images/Capture d’écran 2021-10-29 à 18.35.31.png"
+              alt="résultat de l'installation"
+              style="border: solid 1px white; height: 50vh"
+            />
+          </section>
+          <section>
+            Bravo, tu as maintenant un projet fonctionnel pour faire une
+            présentation 🤩
+          </section>
+        </section>
+        <section>
+          <p>Le projet est installé ?</p>
+          <p class="fragment fade-in">
+            Je vais mainteant détailler certaines features
+          </p>
+        </section>
+        <section>
+          <section>
+            <p class="r-fit-text">Les plugins</p>
+          </section>
+          <section>
+            <p>
+              Afin d'étendre le potentiel de reveal js sans pour autant trop se
+              compliquer la tache, il existe des plugins.
+            </p>
+          </section>
+          <section>
+            <p>
+              Dans cet exemple nous allons voir comment installer le plugin
+              higlight.js qui permet de surligner du code comme dans ton éditeur
+              préféré
+            </p>
+          </section>
+          <section>
+            <p>Il suffit de modifier le main.js avec le plugin choisi</p>
+            <br />
+            <pre>
+              <code data-trim data-noescape data-line-numbers="|2,5-7">
+                import Reveal from "reveal.js";
+                import RevealHighlight from "reveal.js/plugin/highlight/highlight.js";
+                import "reveal.js/plugin/highlight/monokai.css";
+
+                let deck = new Reveal({
+                  plugins: [RevealHighlight],
+                });
+                deck.initialize();
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>
+              Le code entouré des balise <code>pre</code> et
+              <code>code</code> sera mainteant affiché comme ci dessous
+            </p>
+            <br />
+            <pre><code data-trim data-noescape>
+              @font-face {
+                font-family: Chunkfive; src: url('Chunkfive.otf');
+              }
+              
+              body, .usertext {
+                color: #F0F0F0; background: #600;
+                font-family: Chunkfive, sans;
+                --heading-1: 30px/32px Helvetica, sans-serif;
+              }
+              
+              @import url(print.css);
+              @media print {
+                a[href^=http]::after {
+                  content: attr(href)
+                }
+              }
+            </code></pre>
+          </section>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
